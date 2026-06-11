@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shannonhouse Electric Company serves Lawrence County, PA. Expert residential and emergency electrical services. Call (724) 654-8890. We're here, get the job done.">
+  <title>Shannonhouse Electric Company | Lawrence County, PA | Residential Electrician</title>
+  <link rel="icon" type="image/jpg" href="/logo.jpg">
+</head>
+<body>
+
+  <!-- Flashlight Spotlight Overlay (Outage simulator) -->
+  <div class="flashlight-overlay" id="flashlight-overlay"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Outage Alert Banner -->
+  <div class="outage-banner" id="outage-banner">
+    <div class="outage-banner-content">
+      <span class="outage-sos-pulse"></span>
+      <strong>Power Outage?</strong> We're here. Available 24/7 in Lawrence County.
+      <a href="tel:7246548890" class="btn btn-primary btn-sm">(724) 654-8890</a>
+      <button class="btn btn-outline btn-sm" id="outage-restore">Restore Power ⚡</button>
+    </div>
+  </div>
+
+  <!-- Background Glowing Circles -->
+  <div class="glow-bg glow-bg-1"></div>
+  <div class="glow-bg glow-bg-2"></div>
+  <div class="glow-bg glow-bg-3"></div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="logo-container">
+        <img class="logo-img" src="/logo.jpg" alt="Shannonhouse Electric Logo">
+        <div class="brand-name">
+          SHANNONHOUSE <span class="brand-accent">ELECTRIC</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#services">Capabilities</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Request Quote</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline outage-toggle" id="outage-toggle" title="Test Outage Effect">
+          Simulate Outage ⚡
+        </button>
+        <a href="tel:7246548890" class="btn btn-call">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (724) 654-8890
+        </a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <!-- Luxury Outline background typography -->
+    <div class="hero-bg-text">SHANNONHOUSE</div>
+
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="badge-emergency">
+            <span></span> Lawrence County Dispatch Available
+          </div>
+          <h1 class="hero-title">
+            Lawrence County's <br><span>Residential Electrician.</span>
+          </h1>
+          <p class="hero-desc">
+            No subcontractor runarounds or sales pitches. Just clean, reliable home electrical work, upfront pricing, and quick response times. Serving New Castle, Ellwood City, and surrounding areas.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">
+              Get Free Estimate
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="tel:7246548890" class="btn btn-outline">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              (724) 654-8890
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-val">100<span>%</span></span>
+              <span class="stat-label">Local & Licensed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-val">24<span>/</span>7</span>
+              <span class="stat-label">Emergency Support</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-val">NCST</span>
+              <span class="stat-label">Electrical Tech Grad</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="logo-display-wrapper">
+            <div class="logo-hud-ring ring-outer"></div>
+            <div class="logo-hud-ring ring-inner"></div>
+            <img class="logo-display" src="/logo.jpg" alt="SH Electric Logo Large">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials/Trust Bar -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-flex">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+          </div>
+          <div class="trust-text">
+            Fully Licensed & Insured
+            <span>State registered contractor</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="trust-text">
+            Based in Lawrence County, PA
+            <span>Proudly serving local communities</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="trust-text">
+            NCST Trained & Graduate
+            <span>Trained on National Electrical Code (NEC)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bento Capabilities Grid Section -->
+  <section class="capabilities" id="services">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <span class="section-tag">Services & Estimator</span>
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-desc" style="margin: 0 auto 32px auto;">
+          From panel upgrades to troubleshooting, get honest pricing and professional electrical solutions for your home.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Card 1: Residential Services (Span 2 Columns) -->
+        <div class="bento-card bento-col-2" id="bento-residential" data-service-value="residential">
+          <div class="bento-badge">Residential Core</div>
+          <div class="bento-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="bento-card-title">Residential Services</h3>
+          <p class="bento-card-desc">
+            Complete electrical installations, upgrades, and troubleshooting to keep your home safe, modern, and energy-efficient.
+          </p>
+          <div class="bento-split-list">
+            <ul class="service-list">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Electrical Panel Upgrades & Swaps
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Indoor, Outdoor & Recessed Lighting
+              </li>
+            </ul>
+            <ul class="service-list">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Smart Switches & Home Automation
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                EV Charger Installation (Level 2)
+              </li>
+            </ul>
+          </div>
+          <a href="#contact" class="service-link" style="margin-top: 16px;">
+            Request Home Service
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 2: 24/7 Emergency (Span 1 Column) -->
+        <div class="bento-card bento-card-red" id="bento-emergency" data-service-value="emergency">
+          <div class="bento-badge badge-red">24/7 SOS</div>
+          <div class="bento-card-icon" style="color: #ef4444; background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.1);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 class="bento-card-title">Emergency Repairs</h3>
+          <p class="bento-card-desc">
+            Immediate dispatch for hazardous electrical conditions, circuit overloads, burning odors, or partial power failures.
+          </p>
+          <a href="tel:7246548890" class="service-link" style="color: #ef4444;">
+            Report Emergency
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 3: Cost Estimator (Span 2 Columns, Span 2 Rows) -->
+        <div class="bento-card bento-col-2 bento-row-2 estimator-card" id="bento-estimator">
+          <div class="bento-badge">Budget Tool</div>
+          <div class="estimator-layout-grid">
+            <div class="estimator-left-panel">
+              <h3 class="bento-card-title">Instant Cost Estimator</h3>
+              <p class="bento-card-desc" style="margin-bottom: 24px;">
+                Calculate an approximate price range for your residential project in real-time.
+              </p>
+              <div class="estimator-controls">
+                <div class="estimator-field">
+                  <label class="estimator-label">Select Project</label>
+                  <select id="est-project" class="form-control estimator-input">
+                    <option value="panel">Breaker Panel Upgrade</option>
+                    <option value="ev">EV Charger Installation</option>
+                    <option value="outlets">Outlets / Smart Switches</option>
+                    <option value="lighting">Lighting Installation</option>
+                    <option value="diagnostics">Diagnostics & Repairs</option>
+                  </select>
+                </div>
+                
+                <div class="estimator-field" id="est-qty-group">
+                  <div class="qty-header">
+                    <label class="estimator-label">Quantity / Scale</label>
+                    <span id="est-qty-val">1</span>
+                  </div>
+                  <input type="range" id="est-qty" min="1" max="15" value="1" class="estimator-slider">
+                </div>
+              </div>
+            </div>
+            <div class="estimator-right-panel">
+              <div class="estimator-result">
+                <div class="result-label">Estimated Range</div>
+                <div class="result-price" id="est-price-display">$1,800 - $2,800</div>
+                <div class="result-disclaimer">Estimates are based on typical Lawrence County layouts. Final pricing requires a quick on-site look.</div>
+              </div>
+              <button class="btn btn-primary" id="est-apply-btn" style="width: 100%;">
+                Apply to Quote Request
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Meet the Owner / Graduate (Span 1 Column) -->
+        <div class="bento-card" id="bento-credential">
+          <div class="bento-badge">Meet the Owner</div>
+          <div class="bento-card-icon" style="color: #a3ff7a; background: rgba(163, 255, 122, 0.05); border-color: rgba(163, 255, 122, 0.15);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="bento-card-title">Dan Shannonhouse</h3>
+          <p class="bento-card-desc" style="font-size: 0.85rem; line-height: 1.45;">
+            I'm a recent graduate of the <strong>Electrical Technology</strong> program at the <strong>New Castle School of Trades (NCST)</strong>. I started this business to give our local community clean, reliable residential work without the big sales pitches.
+          </p>
+        </div>
+
+        <!-- Card 5: Service Coverage Areas (Span 1 Column) -->
+        <div class="bento-card" id="bento-coverage">
+          <div class="bento-badge">Coverage Towns</div>
+          <div class="bento-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="bento-card-title">Lawrence County</h3>
+          <p class="bento-card-desc" style="font-size: 0.85rem; margin-bottom: 12px;">
+            Based in New Castle, PA. Serving:
+          </p>
+          <div class="bento-town-list">
+            <span>New Castle</span>
+            <span>Ellwood City</span>
+            <span>Neshannock</span>
+            <span>Shenango</span>
+            <span>Union</span>
+            <span>Wilmington</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <span class="section-tag">Local Reviews</span>
+        <h2 class="section-title">What Your Neighbors Say</h2>
+        <p class="section-desc" style="margin: 0 auto 32px auto;">
+          We take pride in our work. Here are some verified reviews from homeowners throughout Lawrence County, PA.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "We had a major electrical panel issue in Neshannock. Dan came out quickly, diagnosed it, and installed a modern 200A service. He did clean work and was super professional. Great to see a local NCST grad doing such good work!"
+          </p>
+          <div class="testimonial-author">
+            <strong>Mark S.</strong>
+            <span>Neshannock Twp, PA</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "Our power partially went out at 1 AM. Dan answered the phone right away and got here in 25 minutes. He found a burnt wire in our breaker box and got it fixed. Absolute lifesaver!"
+          </p>
+          <div class="testimonial-author">
+            <strong>Sarah L.</strong>
+            <span>New Castle, PA</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "Dan installed outdoor landscape lighting and an EV wall charger for us in Ellwood City. Clean conduit runs, he cleaned up after himself, and the price was exactly what he estimated. Highly recommend Shannonhouse!"
+          </p>
+          <div class="testimonial-author">
+            <strong>Dave K.</strong>
+            <span>Ellwood City, PA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faqs" id="faqs">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <span class="section-tag">Homeowner Guide</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc" style="margin: 0 auto 32px auto;">
+          Got questions? We have answers. Learn more about common residential electrical questions.
+        </p>
+      </div>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>When should I upgrade my home's electrical panel?</span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>You should consider an upgrade if your home still uses a fuse box, is over 25 years old, if circuit breakers trip frequently, or if you plan to install major appliances like central air conditioning, hot tubs, or an EV charging station. Upgrading to a 100A or 200A modern panel ensures safety and supports today's electrical loads.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Are you a licensed electrical contractor in Pennsylvania?</span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. I am fully registered with the PA Attorney General's Office as a Home Improvement Contractor under license ID <strong>PA184732</strong>. I carry comprehensive liability insurance and am happy to show proof before starting any work.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What communities in Lawrence County do you serve?</span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>I serve all of Lawrence County, including New Castle, Ellwood City, Neshannock, Shenango, Union, Wilmington, Pulaski, Bessemer, and Wampum. Since I am based locally in New Castle, I can get to your home quickly for scheduled jobs or late-night emergency repairs.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What constitutes an electrical emergency?</span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>An emergency includes anything that poses an immediate safety or fire risk. Examples include a burning or fishy smell from outlets, warm or hot outlet faceplates, persistent buzzing from your breaker box, partial power loss while neighbors have full power, or water dripping onto electrical equipment. If you notice these, turn off your main breaker if it's safe to do so, and call me immediately at (724) 654-8890.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Request Form -->
+  <section class="quote-form-section" id="contact">
+    <div class="container">
+      <div class="quote-grid">
+        <div class="quote-info">
+          <span class="section-tag">Get in Touch</span>
+          <h3>Request a Free Estimate</h3>
+          <p class="quote-info-text">
+            Have a project in mind or need electrical troubleshooting? Fill out our form and a licensed electrician will contact you to discuss your needs or schedule an on-site consultation.
+          </p>
+          <div class="quote-cards">
+            <div class="quote-info-card">
+              <div class="quote-info-card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="quote-info-card-text">
+                <h4>Call or Text Us</h4>
+                <a href="tel:7246548890">(724) 654-8890</a>
+              </div>
+            </div>
+
+            <div class="quote-info-card">
+              <div class="quote-info-card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="quote-info-card-text">
+                <h4>Email Support</h4>
+                <a href="mailto:dan@shannonhouseelectric.com">dan@shannonhouseelectric.com</a>
+              </div>
+            </div>
+
+            <div class="quote-info-card">
+              <div class="quote-info-card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="quote-info-card-text">
+                <h4>Operating Hours</h4>
+                <p>Mon - Fri: 8am - 5pm | Sat: 9am - 1pm</p>
+                <p style="color: var(--primary); font-size: 0.8rem; margin-top: 4px; font-weight: 500;">Emergency Response: 24 Hours / 7 Days</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-form-card">
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="form-name">Your Name</label>
+                <input class="form-control" type="text" id="form-name" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="form-phone">Phone Number</label>
+                <input class="form-control" type="tel" id="form-phone" placeholder="(724) 555-0199" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-email">Email Address</label>
+              <input class="form-control" type="email" id="form-email" placeholder="john@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-service">Required Service</label>
+              <select class="form-control" id="form-service" required>
+                <option value="" disabled selected>Select service type</option>
+                <option value="residential">Residential Service</option>
+                <option value="emergency">Emergency Repair</option>
+                <option value="other">Other Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-message">Project Description</label>
+              <textarea class="form-control" id="form-message" placeholder="Please tell us briefly about your electrical project, goals or problems..." required></textarea>
+            </div>
+
+            <button class="btn btn-primary form-btn" id="form-submit-button" type="submit">
+              Submit Request 
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </button>
+          </form>
+
+          <!-- Form Success Overlay -->
+          <div class="form-success-overlay" id="form-success-message">
+            <div class="form-success-content">
+              <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h4 class="success-title">Request Received!</h4>
+              <p class="success-desc">
+                Thank you <strong id="success-user-name">Client</strong>. Your request for <strong id="success-service-name">Service</strong> has been sent. A licensed electrician from Shannonhouse Electric will get in touch with you shortly.
+              </p>
+              <button class="btn btn-outline" id="success-reset-btn">Send Another Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <div class="brand-name">
+            SHANNONHOUSE <span class="brand-accent">ELECTRIC</span>
+          </div>
+          <p>
+            High-quality electrical contractor servicing homeowners in Lawrence County, PA. Dedicated to professional repairs, installs, and safety diagnostics.
+          </p>
+          <div style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-heading); font-weight: 500;">
+            PA CONTRACTOR ID: <span style="color: var(--primary);">PA184732</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Capabilities</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Get a Quote</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Based in New Castle, PA<br>Proudly Serving All of Lawrence County</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:7246548890">(724) 654-8890</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:dan@shannonhouseelectric.com">dan@shannonhouseelectric.com</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Working Hours</h4>
+          <ul class="footer-hours">
+            <li><span>Monday - Friday</span><span>8:00 AM - 5:00 PM</span></li>
+            <li><span>Saturday</span><span>9:00 AM - 1:00 PM</span></li>
+            <li><span>Sunday</span><span>Closed</span></li>
+            <li><span>Emergency Service</span><span style="color: var(--primary);">24 Hours / 7 Days</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="current-year">2026</span> Shannonhouse Electric Company. All rights reserved. | PA HIC# PA184732
+        </div>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating mobile SOS Call Button -->
+  <a href="tel:7246548890" class="floating-sos" id="floating-sos" aria-label="Call Emergency Service">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span>SOS</span>
+  </a>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-banner" class="cookie-banner" aria-live="polite">
+    <div class="cookie-content">
+      <div class="cookie-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cookie"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>
+      </div>
+      <div class="cookie-text">
+        <h3>Cookie Consent</h3>
+        <p>We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+      </div>
+    </div>
+    <div class="cookie-actions">
+      <button id="decline-cookies" class="btn btn-outline btn-sm">Decline</button>
+      <button id="accept-cookies" class="btn btn-primary btn-sm">Accept All</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
