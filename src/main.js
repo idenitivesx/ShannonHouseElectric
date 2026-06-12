@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
       navToggle.classList.toggle('open');
       navLinksContainer.classList.toggle('open');
+      document.body.classList.toggle('nav-open', navLinksContainer.classList.contains('open'));
     });
 
     // Close menu when clicking outside of navigation links
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!navLinksContainer.contains(e.target) && !navToggle.contains(e.target)) {
         navToggle.classList.remove('open');
         navLinksContainer.classList.remove('open');
+        document.body.classList.remove('nav-open');
       }
     });
 
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         navToggle.classList.remove('open');
         navLinksContainer.classList.remove('open');
+        document.body.classList.remove('nav-open');
       });
     });
   }
@@ -109,47 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 7. Power Outage Spotlight Simulation Mode
-  const outageToggle = document.getElementById('outage-toggle');
-  const outageRestore = document.getElementById('outage-restore');
-  const outageBanner = document.getElementById('outage-banner');
-
-  // Track mouse coordinates for flashlight spotlight mask
-  window.addEventListener('mousemove', (e) => {
-    document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
-    document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
-  });
-
-  const toggleOutageMode = (enable) => {
-    if (enable) {
-      // Trigger spark flicker on body
-      document.body.classList.add('flicker-screen');
-      document.body.classList.add('outage-mode');
-      if (outageBanner) outageBanner.classList.add('active');
-      
-      // Remove flicker class after animation ends
-      setTimeout(() => {
-        document.body.classList.remove('flicker-screen');
-      }, 1200);
-    } else {
-      document.body.classList.add('flicker-screen');
-      document.body.classList.remove('outage-mode');
-      if (outageBanner) outageBanner.classList.remove('active');
-      
-      setTimeout(() => {
-        document.body.classList.remove('flicker-screen');
-      }, 1000);
-    }
-  };
-
-  if (outageToggle) {
-    outageToggle.addEventListener('click', () => toggleOutageMode(true));
-  }
-  if (outageRestore) {
-    outageRestore.addEventListener('click', () => toggleOutageMode(false));
-  }
-
-  // 8. Cost Estimator Calculator Widget
+  // 7. Cost Estimator Calculator Widget
   const estProject = document.getElementById('est-project');
   const estQty = document.getElementById('est-qty');
   const estQtyVal = document.getElementById('est-qty-val');
@@ -170,24 +133,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switch (project) {
       case 'panel':
-        minPrice = 1800 + (qty - 1) * 80;
-        maxPrice = 2400 + (qty - 1) * 120;
+        minPrice = 1600 + (qty - 1) * 70;
+        maxPrice = 2100 + (qty - 1) * 100;
         break;
       case 'ev':
-        minPrice = 600 + (qty - 1) * 150;
-        maxPrice = 800 + (qty - 1) * 200;
+        minPrice = 525 + (qty - 1) * 130;
+        maxPrice = 700 + (qty - 1) * 175;
         break;
       case 'outlets':
-        minPrice = 120 + (qty - 1) * 45;
-        maxPrice = 180 + (qty - 1) * 65;
+        minPrice = 105 + (qty - 1) * 40;
+        maxPrice = 160 + (qty - 1) * 55;
         break;
       case 'lighting':
-        minPrice = 150 + (qty - 1) * 55;
-        maxPrice = 220 + (qty - 1) * 85;
+        minPrice = 130 + (qty - 1) * 48;
+        maxPrice = 195 + (qty - 1) * 75;
         break;
       case 'diagnostics':
-        minPrice = 90 + (qty - 1) * 50;
-        maxPrice = 150 + (qty - 1) * 80;
+        minPrice = 80 + (qty - 1) * 45;
+        maxPrice = 130 + (qty - 1) * 70;
         break;
     }
 
