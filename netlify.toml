@@ -1,3 +1,6 @@
+# DEPRECATED — migrated to Vercel (iiden5796). See vercel.json.
+# Kept for reference only; disconnect this site from GitHub in Netlify if still linked.
+
 [build]
   command = "npm run build"
   publish = "dist"

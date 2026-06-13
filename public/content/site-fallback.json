@@ -1,0 +1,25 @@
+{
+  "businessName": "Shannonhouse Electric",
+  "phone": "724-654-8890",
+  "email": "duane@sh-electric.net",
+  "logoUrl": null,
+  "address": "Youngstown, OH & Lawrence County, PA",
+  "businessHours": [
+    { "day": "monday", "open": "08:00", "close": "17:00", "closed": false },
+    { "day": "tuesday", "open": "08:00", "close": "17:00", "closed": false },
+    { "day": "wednesday", "open": "08:00", "close": "17:00", "closed": false },
+    { "day": "thursday", "open": "08:00", "close": "17:00", "closed": false },
+    { "day": "friday", "open": "08:00", "close": "17:00", "closed": false },
+    { "day": "saturday", "open": "09:00", "close": "13:00", "closed": false },
+    { "day": "sunday", "open": null, "close": null, "closed": true }
+  ],
+  "hoursDisplay": "Mon–Fri 8am–5pm · Sat 9am–1pm · Emergency 24/7",
+  "socialLinks": {
+    "facebook": "",
+    "instagram": "",
+    "google": ""
+  },
+  "seoTitle": "Shannonhouse Electric | Youngstown, OH & Lawrence County, PA",
+  "seoDescription": "Shannonhouse Electric serves Youngstown, OH and surrounding areas, plus Lawrence County, PA. Residential and emergency electrical services. Call (724) 654-8890.",
+  "reviews": []
+}

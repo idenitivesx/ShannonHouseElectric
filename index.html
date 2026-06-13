@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Shannonhouse Electric serves Youngstown, OH and surrounding areas, plus Lawrence County, PA. Residential and emergency electrical services. Call (724) 654-8890.">
-  <title>Shannonhouse Electric | Youngstown, OH & Lawrence County, PA</title>
+  <meta name="description" data-portal="seoDescription" content="Shannonhouse Electric serves Youngstown, OH and surrounding areas, plus Lawrence County, PA. Residential and emergency electrical services. Call (724) 654-8890.">
+  <title data-portal="seoTitle">Shannonhouse Electric | Youngstown, OH & Lawrence County, PA</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="icon" type="image/jpg" href="/logo.jpg">
+  <link rel="icon" data-portal="logo" type="image/jpg" href="/logo.jpg">
 </head>
 <body>
 
@@ -22,8 +22,8 @@
   <header id="header">
     <div class="container">
       <div class="logo-container">
-        <img class="logo-img" src="/logo.jpg" alt="Shannonhouse Electric Logo">
-        <div class="brand-name">
+        <img class="logo-img" src="/logo.jpg" alt="Shannonhouse Electric Logo" data-portal="businessName">
+        <div class="brand-name" data-portal="businessName">
           SHANNONHOUSE <span class="brand-accent">ELECTRIC</span>
         </div>
       </div>
@@ -34,7 +34,7 @@
         <a href="#testimonials">Reviews</a>
         <a href="#contact">Contact</a>
         <div class="nav-drawer-actions">
-          <a href="tel:7246548890" class="btn btn-call btn-full">
+          <a href="tel:7246548890" class="btn btn-call btn-full" data-portal="phone">
             <i class="fa-solid fa-phone fa-icon fa-icon-sm" aria-hidden="true"></i>
             (724) 654-8890
           </a>
@@ -45,7 +45,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="tel:7246548890" class="btn btn-call">
+        <a href="tel:7246548890" class="btn btn-call" data-portal="phone">
           <i class="fa-solid fa-phone fa-icon fa-icon-sm" aria-hidden="true"></i>
           <span class="btn-call-text">(724) 654-8890</span>
         </a>
@@ -81,7 +81,7 @@
               Get Free Estimate
               <i class="fa-solid fa-arrow-right fa-icon fa-icon-sm" aria-hidden="true"></i>
             </a>
-            <a href="tel:7246548890" class="btn btn-outline">
+            <a href="tel:7246548890" class="btn btn-outline" data-portal="phone">
               <i class="fa-solid fa-phone fa-icon fa-icon-sm" aria-hidden="true"></i>
               (724) 654-8890
             </a>
@@ -207,7 +207,7 @@
           <p class="bento-card-desc">
             Immediate dispatch for hazardous electrical conditions, circuit overloads, burning odors, or partial power failures.
           </p>
-          <a href="tel:7246548890" class="service-link" style="color: #ef4444;">
+          <a href="tel:7246548890" class="service-link" style="color: #ef4444;" data-portal="phone">
             Report Emergency
             <i class="fa-solid fa-arrow-right fa-icon fa-icon-xs" aria-hidden="true"></i>
           </a>
@@ -297,12 +297,14 @@
   </section>
 
   <!-- Reviews Section -->
-  <section class="testimonials" id="testimonials">
+  <section class="testimonials" id="testimonials" data-portal-reviews-section>
     <div class="container">
       <div style="text-align: center; margin-bottom: 48px;">
         <span class="section-tag">Reviews</span>
         <h2 class="section-title">Customer Reviews</h2>
       </div>
+
+      <div class="reviews-grid" data-portal="reviews"></div>
 
       <div class="reviews-empty">
         <p>No reviews yet.</p>
@@ -382,7 +384,7 @@
               </div>
               <div class="quote-info-card-text">
                 <h4>Call or Text Us</h4>
-                <a href="tel:7246548890">(724) 654-8890</a>
+                <a href="tel:7246548890" data-portal="phone">(724) 654-8890</a>
               </div>
             </div>
 
@@ -392,7 +394,7 @@
               </div>
               <div class="quote-info-card-text">
                 <h4>Email Support</h4>
-                <a href="mailto:duane@sh-electric.net">duane@sh-electric.net</a>
+                <a href="mailto:duane@sh-electric.net" data-portal="email">duane@sh-electric.net</a>
               </div>
             </div>
 
@@ -402,7 +404,7 @@
               </div>
               <div class="quote-info-card-text">
                 <h4>Operating Hours</h4>
-                <p>Mon - Fri: 8am - 5pm | Sat: 9am - 1pm</p>
+                <p data-portal="hours">Mon - Fri: 8am - 5pm | Sat: 9am - 1pm</p>
                 <p style="color: var(--primary); font-size: 0.8rem; margin-top: 4px; font-weight: 500;">Emergency Response: 24 Hours / 7 Days</p>
               </div>
             </div>
@@ -471,7 +473,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col footer-about">
-          <div class="brand-name">
+          <div class="brand-name" data-portal="businessName">
             SHANNONHOUSE <span class="brand-accent">ELECTRIC</span>
           </div>
           <p>
@@ -493,15 +495,15 @@
           <h4>Contact Info</h4>
           <div class="footer-contact-item">
             <i class="fa-solid fa-location-dot fa-icon fa-icon-sm" aria-hidden="true"></i>
-            <span>Youngstown, OH & Lawrence County, PA<br>Serving surrounding communities in eastern Ohio and western PA</span>
+            <span data-portal="address">Youngstown, OH & Lawrence County, PA<br>Serving surrounding communities in eastern Ohio and western PA</span>
           </div>
           <div class="footer-contact-item">
             <i class="fa-solid fa-phone fa-icon fa-icon-sm" aria-hidden="true"></i>
-            <a href="tel:7246548890">(724) 654-8890</a>
+            <a href="tel:7246548890" data-portal="phone">(724) 654-8890</a>
           </div>
           <div class="footer-contact-item">
             <i class="fa-solid fa-envelope fa-icon fa-icon-sm" aria-hidden="true"></i>
-            <a href="mailto:duane@sh-electric.net">duane@sh-electric.net</a>
+            <a href="mailto:duane@sh-electric.net" data-portal="email">duane@sh-electric.net</a>
           </div>
         </div>
 
@@ -529,13 +531,13 @@
   </footer>
 
   <!-- Sticky mobile call bar -->
-  <a href="tel:7246548890" class="mobile-call-bar">
+  <a href="tel:7246548890" class="mobile-call-bar" data-portal="phone">
     <i class="fa-solid fa-phone fa-icon fa-icon-sm" aria-hidden="true"></i>
     Call (724) 654-8890
   </a>
 
   <!-- Floating mobile SOS Call Button -->
-  <a href="tel:7246548890" class="floating-sos" id="floating-sos" aria-label="Call Emergency Service">
+  <a href="tel:7246548890" class="floating-sos" id="floating-sos" aria-label="Call Emergency Service" data-portal="phone">
     <i class="fa-solid fa-phone fa-icon fa-icon-md" aria-hidden="true"></i>
     <span>SOS</span>
   </a>
@@ -557,6 +559,7 @@
     </div>
   </div>
 
+  <script src="/portal-content.js"></script>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>

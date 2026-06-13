@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "PORTAL_CONTENT_ENABLED=true PORTAL_API_BASE=https://idenworks.com PORTAL_CLIENT_SLUG=shannonhouse-electric PORTAL_SITE_SLUG=main node scripts/sync-portal-content.mjs && vite build",
+    "sync": "node scripts/sync-portal-content.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {
