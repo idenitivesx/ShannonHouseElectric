@@ -458,29 +458,18 @@ section {
   align-items: center;
 }
 
-.photo-wrap {
-  position: relative;
-  padding-top: 8px;
+.owner-photo {
   margin: 0;
+  padding-left: 18px;
+  border-left: 4px solid var(--primary);
 }
 
-.photo-wrap::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  right: 12px;
-  bottom: 12px;
-  border: 1px solid rgba(229, 163, 25, 0.28);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.photo-frame {
+.owner-photo .photo-frame {
   position: relative;
   overflow: hidden;
   background: var(--bg-dark-secondary);
   aspect-ratio: 4 / 5;
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.35);
 }
 
 .hero-photo {
@@ -491,7 +480,7 @@ section {
   object-position: center top;
 }
 
-.photo-wrap figcaption {
+.owner-photo figcaption {
   margin-top: 14px;
   font-size: 0.82rem;
   color: var(--text-muted);
