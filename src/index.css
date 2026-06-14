@@ -1250,6 +1250,15 @@ footer {
 .footer-copy { font-size: 0.85rem; color: var(--text-muted); }
 .footer-legal { display: flex; gap: 24px; font-size: 0.85rem; color: var(--text-muted); }
 .footer-legal a:hover { color: var(--primary); }
+.footer-credit {
+  width: 100%;
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+.footer-credit a { color: inherit; }
+.footer-credit a:hover { color: var(--primary); }
 
 /* Keyframe Animations */
 @keyframes pulse-red {
