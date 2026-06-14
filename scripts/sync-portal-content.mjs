@@ -71,7 +71,26 @@ function mergeSocialLinks(portal = {}) {
   };
 }
 
-function mergeFields(portal = {}, reviews = []) {
+function normalizeProjects(manifest) {
+  if (!manifest?.projects?.length) return [];
+  return manifest.projects.map((project) => ({
+    id: project.id,
+    title: project.title || "",
+    slug: project.slug || "",
+    serviceType: project.serviceType || "",
+    location: project.location || "",
+    description: project.description || "",
+    beforePhotos: Array.isArray(project.beforePhotos) ? project.beforePhotos : [],
+    afterPhotos: Array.isArray(project.afterPhotos) ? project.afterPhotos : [],
+    completedAt: project.completedAt || null,
+    testimonial: project.testimonial || "",
+    tags: project.tags || [],
+    featured: Boolean(project.featured),
+    sortOrder: project.sortOrder ?? 0,
+  }));
+}
+
+function mergeFields(portal = {}, reviews = [], manifest = null) {
   const businessHours =
     Array.isArray(portal.businessHours) && portal.businessHours.length
       ? portal.businessHours
@@ -98,6 +117,12 @@ function mergeFields(portal = {}, reviews = []) {
     seoTitle: portal.seoTitle || fallback.seoTitle,
     seoDescription: portal.seoDescription || fallback.seoDescription,
     reviews: normalizedReviews,
+    projects: normalizeProjects(manifest),
+    portalApi: {
+      base: apiBase,
+      clientSlug,
+      siteSlug,
+    },
     syncedAt: new Date().toISOString(),
     source: "fallback",
   };
@@ -128,7 +153,7 @@ async function syncFromPortal() {
     }
 
     const payload = JSON.parse(responseText);
-    const merged = mergeFields(payload.settings || {}, payload.reviews || []);
+    const merged = mergeFields(payload.settings || {}, payload.reviews || [], payload.manifest || null);
     merged.source = "portal";
     writePublished(merged);
     console.log(`[portal-content] synced from ${url}`);

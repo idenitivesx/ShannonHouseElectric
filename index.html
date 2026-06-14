@@ -13,11 +13,6 @@
   <!-- Scroll Progress Indicator -->
   <div class="scroll-progress" id="scroll-progress"></div>
 
-  <!-- Background Glowing Circles -->
-  <div class="glow-bg glow-bg-1"></div>
-  <div class="glow-bg glow-bg-2"></div>
-  <div class="glow-bg glow-bg-3"></div>
-
   <!-- Header -->
   <header id="header">
     <div class="container">
@@ -61,54 +56,30 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
-    <!-- Luxury Outline background typography -->
-    <div class="hero-bg-text">SHANNONHOUSE</div>
-
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="badge-emergency">
-            <span></span> Local Dispatch Available
-          </div>
-          <h1 class="hero-title">
-            Your Local <br><span>Residential Electrician.</span>
-          </h1>
-          <p class="hero-desc">
-            No subcontractor runarounds or sales pitches. Just clean, reliable home electrical work, upfront pricing, and quick response times. Serving Youngstown, New Castle, Ellwood City, and surrounding communities in eastern Ohio and western PA.
-          </p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">
-              Get Free Estimate
-              <i class="fa-solid fa-arrow-right fa-icon fa-icon-sm" aria-hidden="true"></i>
-            </a>
-            <a href="tel:7246548890" class="btn btn-outline" data-portal="phone">
-              <i class="fa-solid fa-phone fa-icon fa-icon-sm" aria-hidden="true"></i>
-              (724) 654-8890
-            </a>
-          </div>
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-val">100<span>%</span></span>
-              <span class="stat-label">Local & Licensed</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-val">24<span>/</span>7</span>
-              <span class="stat-label">Emergency Support</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-val">NCST</span>
-              <span class="stat-label">Electrical Tech Grad</span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="logo-display-wrapper">
-            <div class="logo-hud-ring ring-outer"></div>
-            <div class="logo-hud-ring ring-inner"></div>
-            <img class="logo-display" src="/logo.jpg" alt="SH Electric Logo Large">
-          </div>
+    <div class="container hero-layout">
+      <div class="hero-copy">
+        <p class="hero-kicker">Youngstown & Lawrence County · residential electrician</p>
+        <h1 class="hero-title">Need an electrician who actually shows up?</h1>
+        <p class="hero-desc">
+          I'm Duane Shannonhouse. Panel upgrades, outlets, lighting, troubleshooting. No subcontractor runarounds and no sales pitch. Just clean residential work and a straight answer on price.
+        </p>
+        <p class="hero-desc hero-desc-secondary">
+          NCST electrical technology graduate. Licensed and insured. I cover Youngstown, Ellwood City, New Castle, and nearby towns on both sides of the state line.
+        </p>
+        <div class="hero-actions">
+          <a href="tel:7246548890" class="btn btn-primary" data-portal="phone">
+            <i class="fa-solid fa-phone fa-icon fa-icon-sm" aria-hidden="true"></i>
+            (724) 654-8890
+          </a>
+          <a href="#contact" class="btn btn-outline">Free estimate</a>
         </div>
       </div>
+      <figure class="hero-visual photo-wrap">
+        <div class="photo-frame">
+          <img class="hero-photo" src="/duane.jpg" alt="Duane Shannonhouse, owner of Shannonhouse Electric">
+        </div>
+        <figcaption>Duane Shannonhouse · Owner</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -293,6 +264,20 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Recent Work (portal projects) -->
+  <section class="projects-work" id="projects" data-portal-projects-section hidden>
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <span class="section-tag">Our Work</span>
+        <h2 class="section-title">Recent Projects</h2>
+        <p class="section-desc" style="margin: 0 auto;">
+          Before and after photos from recent residential and commercial electrical work.
+        </p>
+      </div>
+      <div class="projects-grid" data-portal="projects"></div>
     </div>
   </section>
 

@@ -1,5 +1,53 @@
 import './index.css';
 
+async function getPortalApiConfig() {
+  const fallback = {
+    base: 'https://idenworks.com',
+    clientSlug: 'shannonhouse-electric',
+    siteSlug: 'main',
+  };
+
+  try {
+    const response = await fetch('/content/published.json');
+    if (!response.ok) return fallback;
+    const data = await response.json();
+    return data.portalApi || fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+async function submitPortalLead(payload) {
+  const config = await getPortalApiConfig();
+  const base = String(config.base || 'https://idenworks.com').replace(/\/$/, '');
+  const clientSlug = config.clientSlug || 'shannonhouse-electric';
+  const siteSlug = config.siteSlug || 'main';
+
+  const response = await fetch(
+    `${base}/api/public/sites/${clientSlug}/${siteSlug}/leads`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    },
+  );
+
+  const text = await response.text();
+  let data = null;
+  try {
+    data = text ? JSON.parse(text) : null;
+  } catch {
+    data = null;
+  }
+
+  if (!response.ok) {
+    const message = data?.message || 'Unable to send your request. Please call us instead.';
+    throw new Error(message);
+  }
+
+  return data;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Dynamic Footer Copyright Year
   const currentYearEl = document.getElementById('current-year');
@@ -232,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('form-submit-button');
 
   if (contactForm && successOverlay) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       // Client-side validation check
@@ -266,39 +314,37 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      // Extract form details
-      const userName = document.getElementById('form-name').value;
-      const userPhone = document.getElementById('form-phone').value;
-      const userEmail = document.getElementById('form-email').value;
+      const userName = document.getElementById('form-name').value.trim();
+      const userPhone = document.getElementById('form-phone').value.trim();
+      const userEmail = document.getElementById('form-email').value.trim();
       const selectedService = document.getElementById('form-service').value;
-      const userMessage = document.getElementById('form-message').value;
+      const userMessage = document.getElementById('form-message').value.trim();
 
-      // Log request details to localStorage as a demonstration mock database
-      const savedLeads = JSON.parse(localStorage.getItem('shannonhouse_electric_leads') || '[]');
-      savedLeads.push({
-        name: userName,
-        phone: userPhone,
-        email: userEmail,
-        service: selectedService,
-        message: userMessage,
-        timestamp: new Date().toISOString()
-      });
-      localStorage.setItem('shannonhouse_electric_leads', JSON.stringify(savedLeads));
+      const serviceLabels = {
+        residential: 'Residential Service',
+        emergency: 'Emergency Repair',
+        other: 'Other Inquiry',
+      };
 
-      // Simulate network request before showing success modal
-      setTimeout(() => {
+      try {
+        await submitPortalLead({
+          name: userName,
+          phone: userPhone,
+          email: userEmail,
+          serviceRequested: serviceLabels[selectedService] || selectedService,
+          message: userMessage,
+        });
+
         if (successUserName) successUserName.textContent = userName;
-        
-        let serviceDisplayName = selectedService;
-        if (selectedService === 'residential') serviceDisplayName = 'Residential Service';
-        if (selectedService === 'emergency') serviceDisplayName = 'Emergency Repair';
-        if (selectedService === 'other') serviceDisplayName = 'Other Inquiry';
-        if (successServiceName) successServiceName.textContent = serviceDisplayName;
+        if (successServiceName) {
+          successServiceName.textContent = serviceLabels[selectedService] || selectedService;
+        }
 
-        // Display success overlay
         successOverlay.classList.add('active');
-        
-        // Reset submit button state
+        contactForm.reset();
+      } catch (error) {
+        window.alert(error.message || 'Unable to send your request. Please call us instead.');
+      } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = `
@@ -306,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           `;
         }
-      }, 1200);
+      }
     });
   }
 

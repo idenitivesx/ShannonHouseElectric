@@ -51,7 +51,96 @@
       seoTitle: (data && data.seoTitle) || FALLBACK.seoTitle,
       seoDescription: (data && data.seoDescription) || FALLBACK.seoDescription,
       reviews: (data && Array.isArray(data.reviews) ? data.reviews : FALLBACK.reviews) || [],
+      projects: (data && Array.isArray(data.projects) ? data.projects : []) || [],
     };
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function applyProjects(projects) {
+    var section = document.querySelector("[data-portal-projects-section]");
+    var grid = document.querySelector("[data-portal='projects']");
+    if (!section || !grid) return;
+
+    if (!Array.isArray(projects) || projects.length === 0) {
+      section.hidden = true;
+      grid.innerHTML = "";
+      return;
+    }
+
+    var sorted = projects.slice().sort(function (a, b) {
+      if (a.featured !== b.featured) {
+        return a.featured ? -1 : 1;
+      }
+      return (a.sortOrder || 0) - (b.sortOrder || 0);
+    });
+
+    section.hidden = false;
+    grid.innerHTML = sorted
+      .map(function (project) {
+        var before = project.beforePhotos[0];
+        var after = project.afterPhotos[0] || before;
+        if (!after) return "";
+
+        var meta = [project.serviceType, project.location].filter(Boolean).join(" · ");
+        var photosHtml = "";
+
+        if (before && before.src && before.src !== after.src) {
+          photosHtml +=
+            '<div class="project-photo-pair">' +
+            '<figure class="project-photo project-photo-before">' +
+            '<img src="' +
+            escapeHtml(before.src) +
+            '" alt="' +
+            escapeHtml(before.alt || "Before") +
+            '" loading="lazy">' +
+            '<figcaption>Before</figcaption></figure>' +
+            '<figure class="project-photo project-photo-after">' +
+            '<img src="' +
+            escapeHtml(after.src) +
+            '" alt="' +
+            escapeHtml(after.alt || "After") +
+            '" loading="lazy">' +
+            '<figcaption>After</figcaption></figure>' +
+            "</div>";
+        } else {
+          photosHtml +=
+            '<figure class="project-photo project-photo-single">' +
+            '<img src="' +
+            escapeHtml(after.src) +
+            '" alt="' +
+            escapeHtml(after.alt || project.title || "Project photo") +
+            '" loading="lazy">' +
+            "</figure>";
+        }
+
+        return (
+          '<article class="project-card">' +
+          photosHtml +
+          '<div class="project-card-body">' +
+          '<h3 class="project-card-title">' +
+          escapeHtml(project.title || "Recent project") +
+          "</h3>" +
+          (meta ? '<p class="project-card-meta">' + escapeHtml(meta) + "</p>" : "") +
+          (project.description
+            ? '<p class="project-card-desc">' + escapeHtml(project.description) + "</p>"
+            : "") +
+          (project.testimonial
+            ? '<blockquote class="project-card-quote">"' +
+              escapeHtml(project.testimonial) +
+              '"</blockquote>'
+            : "") +
+          "</div></article>"
+        );
+      })
+      .filter(Boolean)
+      .join("");
   }
 
   function applyBusinessName(name) {
@@ -151,6 +240,7 @@
     applyLogo(content.logoUrl);
     applyBusinessName(content.businessName);
     applyReviews(content.reviews);
+    applyProjects(content.projects);
 
     var addressEl = document.querySelector("[data-portal='address']");
     if (addressEl) addressEl.textContent = content.address;
