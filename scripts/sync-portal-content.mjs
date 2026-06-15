@@ -71,6 +71,34 @@ function mergeSocialLinks(portal = {}) {
   };
 }
 
+function normalizeGalleryItem(item) {
+  const alt = item.altText || item.filename || "Project photo";
+  const captionParts = alt.split(" — ");
+  return {
+    id: item.id,
+    src: item.publicUrl,
+    alt: captionParts[0],
+    caption: captionParts.length > 1 ? captionParts.slice(1).join(" — ") : alt,
+    sortOrder: item.sortOrder ?? 0,
+  };
+}
+
+function galleryFromMedia(media = []) {
+  return media
+    .filter((item) => item.category === "gallery" && item.publicUrl)
+    .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+    .map(normalizeGalleryItem);
+}
+
+function heroFromMedia(media = []) {
+  const heroItem = media.find((item) => item.category === "hero" && item.publicUrl);
+  if (!heroItem) return null;
+  return {
+    src: heroItem.publicUrl,
+    alt: heroItem.altText || "Hero image",
+  };
+}
+
 function normalizeProjects(manifest) {
   if (!manifest?.projects?.length) return [];
   return manifest.projects.map((project) => ({
@@ -90,20 +118,35 @@ function normalizeProjects(manifest) {
   }));
 }
 
-function mergeFields(portal = {}, reviews = [], manifest = null) {
+function mergeFields(portal = {}, reviews = [], media = [], manifest = null) {
   const businessHours =
     Array.isArray(portal.businessHours) && portal.businessHours.length
       ? portal.businessHours
       : fallback.businessHours || [];
 
-  const normalizedReviews = Array.isArray(reviews)
+  const normalizedReviews = Array.isArray(reviews) && reviews.length
     ? reviews.map((review) => ({
         authorName: review.authorName,
         rating: review.rating,
         body: review.body,
         source: review.source || "manual",
+        sortOrder: review.sortOrder ?? 0,
       }))
-    : [];
+    : fallback.reviews || [];
+
+  const galleryFromManifest = manifest?.gallery?.length ? manifest.gallery : [];
+  const galleryFromMediaItems = galleryFromMedia(media);
+  const gallery = galleryFromManifest.length
+    ? galleryFromManifest
+    : galleryFromMediaItems.length
+      ? galleryFromMediaItems
+      : fallback.gallery || [];
+
+  const projects = manifest?.projects?.length
+    ? normalizeProjects(manifest)
+    : fallback.projects || [];
+
+  const hero = manifest?.hero || heroFromMedia(media) || fallback.hero || null;
 
   return {
     businessName: portal.businessName || fallback.businessName,
@@ -116,8 +159,13 @@ function mergeFields(portal = {}, reviews = [], manifest = null) {
     socialLinks: mergeSocialLinks(portal),
     seoTitle: portal.seoTitle || fallback.seoTitle,
     seoDescription: portal.seoDescription || fallback.seoDescription,
+    serviceAreas: portal.serviceAreas?.length ? portal.serviceAreas : fallback.serviceAreas || [],
+    serviceCatalog: portal.serviceCatalog?.length ? portal.serviceCatalog : fallback.serviceCatalog || [],
+    homepage: portal.homepage && Object.keys(portal.homepage).length ? portal.homepage : fallback.homepage || {},
     reviews: normalizedReviews,
-    projects: normalizeProjects(manifest),
+    gallery,
+    projects,
+    hero,
     portalApi: {
       base: apiBase,
       clientSlug,
@@ -153,7 +201,12 @@ async function syncFromPortal() {
     }
 
     const payload = JSON.parse(responseText);
-    const merged = mergeFields(payload.settings || {}, payload.reviews || [], payload.manifest || null);
+    const merged = mergeFields(
+      payload.settings || {},
+      payload.reviews || [],
+      payload.media || [],
+      payload.manifest || null,
+    );
     merged.source = "portal";
     writePublished(merged);
     console.log(`[portal-content] synced from ${url}`);

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
 
 :root {
   /* Color System */
@@ -23,6 +23,8 @@
   /* Fonts */
   --font-heading: 'Source Serif 4', Georgia, serif;
   --font-body: 'Inter', sans-serif;
+  --font-display: 'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   
   /* Layout Constants */
   --header-height: 80px;
@@ -422,33 +424,42 @@ section {
 }
 
 .hero-kicker {
-  margin: 0 0 18px;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
+  margin: 0 0 20px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--primary);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .hero-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5vw, 3.75rem);
+  font-family: var(--font-display);
+  font-size: clamp(2.65rem, 6vw, 4.25rem);
   font-weight: 700;
-  line-height: 1.06;
-  margin-bottom: 22px;
-  letter-spacing: -0.02em;
-  max-width: 14ch;
+  line-height: 0.98;
+  margin-bottom: 24px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  max-width: 12ch;
 }
 
 .hero-desc {
-  font-size: 1.05rem;
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  font-weight: 400;
   margin-bottom: 14px;
-  color: var(--text-muted);
+  color: var(--text-main);
   max-width: 44ch;
   line-height: 1.65;
 }
 
 .hero-desc-secondary {
-  font-size: 0.98rem;
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--text-muted);
   margin-bottom: 28px;
+  line-height: 1.6;
 }
 
 .hero-actions {
