@@ -66,13 +66,17 @@
   function applyProjects(projects) {
     var section = document.querySelector("[data-portal-projects-section]");
     var grid = document.querySelector("[data-portal='projects']");
+    var placeholder = document.getElementById("jobs-placeholder");
     if (!section || !grid) return;
 
     if (!Array.isArray(projects) || projects.length === 0) {
-      section.hidden = true;
       grid.innerHTML = "";
+      if (placeholder) placeholder.hidden = false;
+      section.hidden = false;
       return;
     }
+
+    if (placeholder) placeholder.hidden = true;
 
     var sorted = projects.slice().sort(function (a, b) {
       if (a.featured !== b.featured) {
@@ -152,6 +156,10 @@
         el.innerHTML = main + ' <span class="brand-accent">' + accent + "</span>";
         return;
       }
+      if (el.classList.contains("site-brand") || el.classList.contains("footer-brand")) {
+        el.textContent = name;
+        return;
+      }
       if (el.tagName === "IMG") {
         el.setAttribute("alt", name + " Logo");
         return;
@@ -197,11 +205,12 @@
     if (!section || !grid) return;
 
     if (!Array.isArray(reviews) || reviews.length === 0) {
-      section.querySelector(".reviews-empty")?.removeAttribute("hidden");
+      section.hidden = true;
       grid.innerHTML = "";
       return;
     }
 
+    section.hidden = false;
     var empty = section.querySelector(".reviews-empty");
     if (empty) empty.hidden = true;
 
@@ -251,8 +260,20 @@
     document.querySelectorAll("[data-portal='phone']").forEach(function (el) {
       el.setAttribute("href", telHref(content.phone));
       if (el.classList.contains("mobile-call-bar")) {
-        el.innerHTML =
-          '<i class="fa-solid fa-phone fa-icon fa-icon-sm" aria-hidden="true"></i> Call ' + phone;
+        el.textContent = "Call Duane · " + phone;
+        return;
+      }
+      if (el.classList.contains("hero-phone")) {
+        var numberEl = el.querySelector(".hero-phone-number");
+        if (numberEl) numberEl.textContent = phone;
+        return;
+      }
+      if (el.classList.contains("estimate-phone")) {
+        el.textContent = phone;
+        return;
+      }
+      if (el.classList.contains("nav-call")) {
+        el.textContent = "Call Duane";
         return;
       }
       if (el.tagName === "A" && el.textContent.trim().match(/\d/)) {
