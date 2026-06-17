@@ -6,6 +6,9 @@
   <meta name="description" data-portal="seoDescription" content="Shannonhouse Electric serves Youngstown, OH and surrounding areas, plus Lawrence County, PA. Residential and emergency electrical services. Call (724) 654-8890.">
   <title data-portal="seoTitle">Shannonhouse Electric | Youngstown, OH & Lawrence County, PA</title>
   <link rel="icon" data-portal="logo" type="image/jpg" href="/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,10 +17,10 @@
       <a href="#top" class="site-brand" data-portal="businessName">Shannonhouse Electric</a>
 
       <nav class="site-nav" id="nav-links">
-        <a href="#jobs">Recent Jobs</a>
-        <a href="#area">Service Area</a>
-        <a href="#contact">Get an Estimate</a>
-        <a href="tel:7246548890" class="nav-call" data-portal="phone">Call Duane</a>
+        <a href="#jobs"><span class="nav-index">01</span> Recent Jobs</a>
+        <a href="#area"><span class="nav-index">02</span> Service Area</a>
+        <a href="#contact"><span class="nav-index">03</span> Estimate</a>
+        <a href="tel:7246548890" class="nav-call" data-portal="phone">Call Duane &#8599;</a>
       </nav>
 
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -27,69 +30,72 @@
     </div>
   </header>
 
-  <!-- Hero — split: pitch + portrait -->
+  <!-- Hero -->
   <section class="hero" id="top">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <p class="hero-eyebrow">
-          <span class="hero-dot"></span>
-          Youngstown OH · Lawrence County PA
-        </p>
-        <h1 class="hero-title">
-          Honest residential<br>
-          <span class="hero-title-accent">electrical work.</span>
-        </h1>
-        <p class="hero-lead">
-          I'm Duane Shannonhouse — a licensed, owner-operated electrician.
-          Panels, circuits, lighting and emergencies. The same guy quotes the
-          job and does the work.
-        </p>
+    <div class="hero-meta">
+      <span>Youngstown, OH &mdash; Lawrence County, PA</span>
+      <span>Licensed &middot; Insured &middot; Owner-operated</span>
+    </div>
 
+    <div class="hero-headline">
+      <h1 class="hero-title">
+        Honest wiring,<br>
+        done by the <em>same hands</em><br>
+        that quote it.
+      </h1>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-lead-col">
+        <p class="hero-lead">
+          I&rsquo;m Duane Shannonhouse &mdash; a licensed, owner-operated
+          residential electrician. Panels, circuits, lighting, EV chargers and
+          emergencies. No salesman, no subcontractors. Just the electrician you
+          hired, on your job.
+        </p>
         <div class="hero-actions">
           <a href="tel:7246548890" class="btn-primary hero-phone" data-portal="phone">
-            <span class="hero-phone-label">Call or text</span>
+            <span class="hero-phone-label">Call or text Duane</span>
             <span class="hero-phone-number">(724) 654-8890</span>
           </a>
-          <a href="#contact" class="btn-ghost">Request an estimate</a>
+          <a href="#contact" class="btn-ghost">Request an estimate &#8599;</a>
         </div>
-
         <ul class="hero-badges">
           <li class="badge badge-ncst">NCST Electrical Technology</li>
-          <li class="badge">Licensed &amp; Insured</li>
           <li class="badge">24/7 Emergency</li>
         </ul>
       </div>
 
-      <div class="hero-media">
+      <figure class="hero-media">
         <div class="hero-photo-frame">
           <img class="hero-photo" src="/duane.jpg" alt="Duane Shannonhouse, owner of Shannonhouse Electric">
         </div>
-        <div class="hero-card">
-          <p class="hero-card-name">Duane Shannonhouse</p>
-          <p class="hero-card-role">Owner-operator · Residential electrician</p>
-        </div>
-      </div>
+        <figcaption class="hero-card">
+          <span class="hero-card-name">Duane Shannonhouse</span>
+          <span class="hero-card-role">Owner &middot; Residential Electrician</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- Trust strip -->
+  <!-- Numbers / trust band -->
   <section class="trust">
     <div class="trust-inner">
       <div class="trust-item">
-        <span class="trust-num">200A</span>
-        <span class="trust-label">Panel upgrades</span>
+        <span class="trust-num">200<span class="trust-unit">A</span></span>
+        <span class="trust-label">Service &amp; panel upgrades</span>
       </div>
       <div class="trust-item">
-        <span class="trust-num">2</span>
-        <span class="trust-label">States served</span>
+        <span class="trust-num">02</span>
+        <span class="trust-label">States served, OH &amp; PA</span>
       </div>
       <div class="trust-item">
-        <span class="trust-num">24/7</span>
-        <span class="trust-label">Emergency calls</span>
+        <span class="trust-num">24<span class="trust-unit">/7</span></span>
+        <span class="trust-label">Emergency response</span>
       </div>
       <div class="trust-item">
-        <span class="trust-num">1:1</span>
-        <span class="trust-label">Owner does the work</span>
+        <span class="trust-num">1<span class="trust-unit">:1</span></span>
+        <span class="trust-label">The owner does the work</span>
       </div>
     </div>
   </section>
@@ -97,9 +103,9 @@
   <!-- Recent Jobs -->
   <section class="jobs-section" id="jobs" data-portal-projects-section>
     <div class="section-head">
-      <p class="section-kicker">From the field</p>
-      <h2 class="section-title">Recent Jobs</h2>
-      <p class="section-sub">Real residential work — panels, circuits, lighting. Photos straight from the job site.</p>
+      <p class="section-kicker"><span class="kicker-index">01</span> From the field</p>
+      <h2 class="section-title">Recent jobs, <em>straight from the truck.</em></h2>
+      <p class="section-sub">Real residential work &mdash; panels, circuits, lighting and chargers. Photos taken on the job site, not stock.</p>
     </div>
 
     <div class="jobs-feed">
@@ -118,9 +124,9 @@
             </figure>
           </div>
           <div class="job-body">
-            <p class="job-meta">Panel upgrade · Austintown, OH</p>
-            <h3 class="job-title">100A fuse box → 200A breaker panel</h3>
-            <p class="job-desc">Full service upgrade for a 1960s ranch — new meter socket, grounding, and labeled circuits. Passed inspection first try.</p>
+            <p class="job-meta">Panel upgrade &middot; Austintown, OH</p>
+            <h3 class="job-title">100A fuse box &rarr; 200A breaker panel</h3>
+            <p class="job-desc">Full service upgrade for a 1960s ranch &mdash; new meter socket, grounding, and labeled circuits. Passed inspection first try.</p>
           </div>
         </article>
 
@@ -129,8 +135,8 @@
             <div class="job-photo-placeholder job-photo-ev" role="img" aria-label="EV charger installation"></div>
           </figure>
           <div class="job-body">
-            <p class="job-meta">EV charger · Boardman, OH</p>
-            <h3 class="job-title">Level 2 charger — 50A dedicated circuit</h3>
+            <p class="job-meta">EV charger &middot; Boardman, OH</p>
+            <h3 class="job-title">Level 2 charger &mdash; 50A dedicated circuit</h3>
             <p class="job-desc">Garage run with NEMA 14-50 outlet. Client charges overnight, no more extension cord from the dryer.</p>
           </div>
         </article>
@@ -140,7 +146,7 @@
             <div class="job-photo-placeholder job-photo-lighting" role="img" aria-label="Recessed lighting installation"></div>
           </figure>
           <div class="job-body">
-            <p class="job-meta">Lighting · New Castle, PA</p>
+            <p class="job-meta">Lighting &middot; New Castle, PA</p>
             <h3 class="job-title">Kitchen recessed cans + dimmer switch</h3>
             <p class="job-desc">Six LED cans, new switch leg, patched and ready for paint. Lawrence County side of the line.</p>
           </div>
@@ -151,8 +157,8 @@
             <div class="job-photo-placeholder job-photo-outlet" role="img" aria-label="Outdoor outlet installation"></div>
           </figure>
           <div class="job-body">
-            <p class="job-meta">Outdoor · Canfield, OH</p>
-            <h3 class="job-title">Weatherproof GFCI outlets — back patio</h3>
+            <p class="job-meta">Outdoor &middot; Canfield, OH</p>
+            <h3 class="job-title">Weatherproof GFCI outlets &mdash; back patio</h3>
             <p class="job-desc">Two in-use covers, dedicated 20A line from the panel. Ready for summer string lights.</p>
           </div>
         </article>
@@ -164,57 +170,60 @@
   <section class="area-section" id="area">
     <div class="area-inner">
       <div class="area-copy">
-        <p class="section-kicker">Where I work</p>
-        <h2 class="section-title">Service Area</h2>
-        <p>I drive to you — Youngstown and eastern Ohio on one side, Lawrence County on the other. Same guy shows up, same truck.</p>
+        <p class="section-kicker"><span class="kicker-index">02</span> Where I work</p>
+        <h2 class="section-title">Two states,<br><em>one truck.</em></h2>
+        <p class="area-text">I drive to you &mdash; eastern Ohio on one side, Lawrence County on the other. Same guy shows up, same truck, every time.</p>
         <p class="area-address" data-portal="address">Youngstown, OH &amp; Lawrence County, PA</p>
-        <p class="area-hours"><span data-portal="hours">Mon–Fri 8am–5pm · Sat 9am–1pm · Emergency 24/7</span></p>
-        <p class="area-note">Not sure if you're in range? Call — I'll tell you straight.</p>
+        <p class="area-hours"><span data-portal="hours">Mon&ndash;Fri 8am&ndash;5pm &middot; Sat 9am&ndash;1pm &middot; Emergency 24/7</span></p>
+        <p class="area-note">Not sure if you&rsquo;re in range? Call &mdash; I&rsquo;ll tell you straight.</p>
       </div>
-      <div class="area-map">
-        <div class="area-zones">
-          <div class="zone zone-oh">
-            <h3>Ohio</h3>
-            <ul>
-              <li>Youngstown</li>
-              <li>Boardman</li>
-              <li>Austintown</li>
-              <li>Canfield</li>
-            </ul>
-          </div>
-          <div class="zone zone-pa">
-            <h3>Pennsylvania</h3>
-            <ul>
-              <li>New Castle</li>
-              <li>Ellwood City</li>
-              <li>Neshannock</li>
-              <li>Shenango · Union · Wilmington</li>
-            </ul>
-          </div>
+
+      <div class="area-zones">
+        <div class="zone zone-oh">
+          <span class="zone-index">01</span>
+          <h3>Ohio</h3>
+          <ul>
+            <li>Youngstown</li>
+            <li>Boardman</li>
+            <li>Austintown</li>
+            <li>Canfield</li>
+          </ul>
+        </div>
+        <div class="zone zone-pa">
+          <span class="zone-index">02</span>
+          <h3>Pennsylvania</h3>
+          <ul>
+            <li>New Castle</li>
+            <li>Ellwood City</li>
+            <li>Neshannock</li>
+            <li>Shenango &middot; Union &middot; Wilmington</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Reviews — minimal, portal-driven -->
+  <!-- Reviews — portal-driven -->
   <section class="reviews-section" id="reviews" data-portal-reviews-section hidden>
     <div class="section-head">
-      <p class="section-kicker">Word of mouth</p>
-      <h2 class="section-title">What homeowners say</h2>
+      <p class="section-kicker"><span class="kicker-index">&mdash;</span> Word of mouth</p>
+      <h2 class="section-title">What homeowners say.</h2>
     </div>
     <div class="reviews-grid" data-portal="reviews"></div>
-    <p class="reviews-empty">No reviews yet — be the first.</p>
+    <p class="reviews-empty">No reviews yet &mdash; be the first.</p>
   </section>
 
   <!-- Estimate form -->
   <section class="estimate-section" id="contact">
     <div class="estimate-inner">
       <div class="estimate-intro">
-        <p class="section-kicker">Let's talk</p>
-        <h2 class="section-title">Need an estimate?</h2>
-        <p>Describe the job — I'll call you back, usually same day.</p>
-        <a href="tel:7246548890" class="estimate-phone" data-portal="phone">(724) 654-8890</a>
-        <a href="mailto:duane@sh-electric.net" class="estimate-email" data-portal="email">duane@sh-electric.net</a>
+        <p class="section-kicker"><span class="kicker-index">03</span> Let&rsquo;s talk</p>
+        <h2 class="section-title">Tell me<br>about the <em>job.</em></h2>
+        <p class="estimate-text">Describe what&rsquo;s going on and I&rsquo;ll call you back &mdash; usually the same day.</p>
+        <div class="estimate-contacts">
+          <a href="tel:7246548890" class="estimate-phone" data-portal="phone">(724) 654-8890</a>
+          <a href="mailto:duane@sh-electric.net" class="estimate-email" data-portal="email">duane@sh-electric.net</a>
+        </div>
       </div>
 
       <div class="estimate-form-wrap">
@@ -240,7 +249,7 @@
             <select class="form-control" id="form-service" required>
               <option value="" disabled selected>Select one</option>
               <option value="residential">Panel / circuits / lighting</option>
-              <option value="emergency">Emergency — need help now</option>
+              <option value="emergency">Emergency &mdash; need help now</option>
               <option value="other">Something else</option>
             </select>
           </div>
@@ -250,12 +259,12 @@
             <textarea class="form-control" id="form-message" placeholder="What's going on? Address helps." required></textarea>
           </div>
 
-          <button class="btn-submit" id="form-submit-button" type="submit">Send to Duane</button>
+          <button class="btn-submit" id="form-submit-button" type="submit">Send to Duane &#8599;</button>
         </form>
 
         <div class="form-success" id="form-success-message">
           <p class="form-success-title">Got it.</p>
-          <p class="form-success-desc">Thanks, <strong id="success-user-name">there</strong>. I'll reach out about your <strong id="success-service-name">request</strong> soon.</p>
+          <p class="form-success-desc">Thanks, <strong id="success-user-name">there</strong>. I&rsquo;ll reach out about your <strong id="success-service-name">request</strong> soon.</p>
           <button class="btn-reset" id="success-reset-btn" type="button">Send another</button>
         </div>
       </div>
@@ -264,15 +273,30 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p class="footer-brand" data-portal="businessName">Shannonhouse Electric</p>
-      <p class="footer-tagline">Duane Shannonhouse · NCST grad · residential electrician</p>
+      <div class="footer-brand-col">
+        <p class="footer-brand" data-portal="businessName">Shannonhouse Electric</p>
+        <p class="footer-tagline">Duane Shannonhouse &middot; NCST grad &middot; residential electrician serving OH &amp; PA.</p>
+      </div>
+      <nav class="footer-nav">
+        <span class="footer-nav-head">Site</span>
+        <a href="#jobs">Recent Jobs</a>
+        <a href="#area">Service Area</a>
+        <a href="#contact">Estimate</a>
+      </nav>
+      <nav class="footer-nav">
+        <span class="footer-nav-head">Contact</span>
+        <a href="tel:7246548890" data-portal="phone">(724) 654-8890</a>
+        <a href="mailto:duane@sh-electric.net" data-portal="email">duane@sh-electric.net</a>
+      </nav>
+    </div>
+    <div class="footer-base">
       <p class="footer-copy">&copy; <span id="current-year">2026</span> Shannonhouse Electric</p>
       <p class="footer-credit">Site by <a href="https://idenworks.com" target="_blank" rel="noopener noreferrer">idenworks.com</a></p>
     </div>
   </footer>
 
   <a href="tel:7246548890" class="mobile-call-bar" data-portal="phone">
-    Call Duane · (724) 654-8890
+    Call Duane &middot; (724) 654-8890
   </a>
 
   <script src="/portal-content.js"></script>
