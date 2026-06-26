@@ -14,6 +14,14 @@
     seoDescription:
       "Shannonhouse Electric serves Youngstown, OH and surrounding areas, plus Lawrence County, PA. Residential and emergency electrical services. Call (724) 654-8890.",
     reviews: [],
+    homepage: {
+      heroEyebrow: "Youngstown OH · Lawrence County PA",
+      heroHeadline: "Duane Shannonhouse",
+      heroTagline: "Residential electrician · owner-operator",
+      heroSubheadline: "Call or text for estimates, panel work, and emergency electrical service.",
+      aboutHeadline: "Service area",
+      trustItems: ["Youngstown OH", "Lawrence County PA", "Emergency 24/7"],
+    },
   };
 
   function digits(phone) {
@@ -50,6 +58,7 @@
       socialLinks: (data && data.socialLinks) || FALLBACK.socialLinks,
       seoTitle: (data && data.seoTitle) || FALLBACK.seoTitle,
       seoDescription: (data && data.seoDescription) || FALLBACK.seoDescription,
+      homepage: (data && data.homepage) || FALLBACK.homepage || {},
       reviews: (data && Array.isArray(data.reviews) ? data.reviews : FALLBACK.reviews) || [],
       projects: (data && Array.isArray(data.projects) ? data.projects : []) || [],
     };
@@ -235,6 +244,23 @@
       .join("");
   }
 
+  function applyHomepage(homepage) {
+    if (!homepage) return;
+    var map = [
+      ["heroEyebrow", "[data-portal='heroEyebrow']"],
+      ["heroHeadline", "[data-portal='heroHeadline']"],
+      ["heroTagline", "[data-portal='heroTagline']"],
+      ["heroSubheadline", "[data-portal='heroSubheadline']"],
+      ["aboutHeadline", "[data-portal='aboutHeadline']"],
+    ];
+    map.forEach(function (pair) {
+      var value = homepage[pair[0]];
+      if (!value) return;
+      var el = document.querySelector(pair[1]);
+      if (el) el.textContent = value;
+    });
+  }
+
   function applyContent(content, loadSource) {
     var phone = displayPhone(content.phone);
     var email = content.email;
@@ -247,6 +273,7 @@
 
     applySeo(content);
     applyLogo(content.logoUrl);
+    applyHomepage(content.homepage);
     applyBusinessName(content.businessName);
     applyReviews(content.reviews);
     applyProjects(content.projects);
