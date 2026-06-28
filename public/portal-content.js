@@ -315,6 +315,50 @@
         el.textContent = email;
       }
     });
+
+    if (!isPreviewMode()) {
+      trackPageView(content.portalApi);
+    }
+  }
+
+  function trackPageView(portalApi) {
+    if (!portalApi || !portalApi.base || !portalApi.clientSlug || !portalApi.siteSlug) {
+      return;
+    }
+
+    var storageKey = "iw_visitor_id";
+    var visitorId = null;
+    try {
+      visitorId = localStorage.getItem(storageKey);
+      if (!visitorId) {
+        visitorId =
+          typeof crypto !== "undefined" && crypto.randomUUID
+            ? crypto.randomUUID()
+            : String(Date.now()) + "-" + Math.random().toString(16).slice(2);
+        localStorage.setItem(storageKey, visitorId);
+      }
+    } catch (error) {
+      visitorId = String(Date.now()) + "-" + Math.random().toString(16).slice(2);
+    }
+
+    var url =
+      portalApi.base.replace(/\/$/, "") +
+      "/api/public/sites/" +
+      portalApi.clientSlug +
+      "/" +
+      portalApi.siteSlug +
+      "/traffic";
+
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        visitorId: visitorId,
+        path: location.pathname + location.search,
+        referrer: document.referrer || "",
+      }),
+      keepalive: true,
+    }).catch(function () {});
   }
 
   function isPreviewMode() {
