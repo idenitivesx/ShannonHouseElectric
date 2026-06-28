@@ -61,6 +61,7 @@
       homepage: (data && data.homepage) || FALLBACK.homepage || {},
       reviews: (data && Array.isArray(data.reviews) ? data.reviews : FALLBACK.reviews) || [],
       projects: (data && Array.isArray(data.projects) ? data.projects : []) || [],
+      portalApi: (data && data.portalApi) || null,
     };
   }
 
@@ -316,7 +317,64 @@
     });
   }
 
+  function isPreviewMode() {
+    return /[?&]idenworksPreview=1(?:&|$)/.test(window.location.search);
+  }
+
+  function previewManifestUrl(portalApi) {
+    if (!portalApi || !portalApi.base || !portalApi.clientSlug || !portalApi.siteSlug) {
+      return null;
+    }
+    return (
+      portalApi.base.replace(/\/$/, "") +
+      "/api/public/sites/" +
+      encodeURIComponent(portalApi.clientSlug) +
+      "/" +
+      encodeURIComponent(portalApi.siteSlug) +
+      "/preview"
+    );
+  }
+
+  function startPreview(portalApi) {
+    var url = previewManifestUrl(portalApi);
+
+    function refresh() {
+      if (!url) {
+        return;
+      }
+      fetch(url, { cache: "no-store" })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("preview unavailable (" + response.status + ")");
+          }
+          return response.json();
+        })
+        .then(function (payload) {
+          var manifest = (payload && payload.manifest) || payload;
+          applyContent(mergeContent(manifest), "draft-preview");
+        })
+        .catch(function (error) {
+          console.warn("[portal-content] draft preview fetch failed", error);
+        });
+    }
+
+    refresh();
+
+    window.addEventListener("message", function (event) {
+      if (event.data && event.data.type === "idenworks:refresh") {
+        refresh();
+      }
+    });
+
+    try {
+      window.parent.postMessage({ type: "idenworks:preview-ready" }, "*");
+    } catch (err) {
+      /* cross-origin parent without a listener — safe to ignore */
+    }
+  }
+
   function loadAndApply() {
+    var preview = isPreviewMode();
     fetch("/content/published.json")
       .then(function (response) {
         if (!response.ok) throw new Error("published.json unavailable");
@@ -324,10 +382,16 @@
       })
       .then(function (data) {
         applyContent(mergeContent(data), data.source || "published.json");
+        if (preview) {
+          startPreview(mergeContent(data).portalApi);
+        }
       })
       .catch(function (error) {
         console.warn("[portal-content] using embedded fallback", error);
         applyContent(mergeContent(FALLBACK), "embedded-fallback");
+        if (preview) {
+          startPreview(mergeContent(FALLBACK).portalApi);
+        }
       });
   }
 
