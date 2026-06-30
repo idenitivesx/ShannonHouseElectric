@@ -62,7 +62,94 @@
       reviews: (data && Array.isArray(data.reviews) ? data.reviews : FALLBACK.reviews) || [],
       projects: (data && Array.isArray(data.projects) ? data.projects : []) || [],
       portalApi: (data && data.portalApi) || null,
+      appearance: (data && data.appearance) || null,
+      brandColors: (data && data.brandColors) || {},
     };
+  }
+
+  // Theme + layout from the portal (published.json `appearance`). Adds body
+  // classes and overrides the site's accent so a theme change recolors the
+  // whole site without a rebuild.
+  function applySiteAppearance(content) {
+    var appearance = content.appearance;
+    var colors = (appearance && appearance.brandColors) || content.brandColors || {};
+
+    [
+      "layout-split-hero",
+      "layout-centered-hero",
+      "layout-compact",
+      "layout-gallery-first",
+      "layout-emergency-banner",
+    ].forEach(function (cls) {
+      document.body.classList.remove(cls);
+    });
+    ["theme-classic", "theme-bold", "theme-minimal", "theme-warm", "theme-midnight"].forEach(function (cls) {
+      document.body.classList.remove(cls);
+    });
+
+    if (appearance && appearance.layoutClass) document.body.classList.add(appearance.layoutClass);
+    if (appearance && appearance.themeClass) document.body.classList.add(appearance.themeClass);
+
+    var root = document.documentElement;
+    if (colors.primary) root.style.setProperty("--brand-primary", colors.primary);
+    if (colors.secondary) root.style.setProperty("--brand-secondary", colors.secondary);
+    if (colors.accent) {
+      root.style.setProperty("--brand-accent", colors.accent);
+      // Shannonhouse's native accent token — recolors buttons, links, badges.
+      root.style.setProperty("--amber", colors.accent);
+      root.style.setProperty("--amber-dim", colors.accent);
+    }
+  }
+
+  function applyCtaLabels(homepage) {
+    if (!homepage || typeof homepage !== "object") return;
+    if (homepage.footerTagline) {
+      document.querySelectorAll("[data-portal='footerTagline']").forEach(function (el) {
+        el.textContent = homepage.footerTagline;
+      });
+    }
+    if (homepage.contactHeadline) {
+      document.querySelectorAll("[data-portal='contactHeadline']").forEach(function (el) {
+        el.textContent = homepage.contactHeadline;
+      });
+    }
+  }
+
+  // Phase D: typography preset.
+  function applyFontPreset(appearance) {
+    var font = appearance && appearance.font;
+    if (!font) return;
+    if (font.googleFontsUrl && !document.querySelector("link[data-portal-font]")) {
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = font.googleFontsUrl;
+      link.setAttribute("data-portal-font", "");
+      document.head.appendChild(link);
+    }
+    var root = document.documentElement;
+    if (font.headingStack) root.style.setProperty("--font-heading", font.headingStack);
+    if (font.bodyStack) root.style.setProperty("--font-body", font.bodyStack);
+    document.body.classList.add("has-font-preset");
+  }
+
+  // Phase C: hide sections the owner switched off.
+  function applySectionVisibility(homepage) {
+    var v = (homepage && homepage.sectionVisibility) || {};
+    var map = {
+      hero: '[data-portal-section="hero"]',
+      about: "#area",
+      work: "#jobs",
+      reviews: "#reviews",
+      pricing: "#contact",
+    };
+    Object.keys(map).forEach(function (key) {
+      var el = document.querySelector(map[key]);
+      if (!el) return;
+      if (v[key] === false) {
+        el.hidden = true;
+        el.style.display = "none";
+      }
+    });
   }
 
   function escapeHtml(value) {
@@ -272,12 +359,16 @@
       displayPhone: phone,
     });
 
+    applySiteAppearance(content);
+    applyFontPreset(content.appearance);
     applySeo(content);
     applyLogo(content.logoUrl);
     applyHomepage(content.homepage);
+    applyCtaLabels(content.homepage);
     applyBusinessName(content.businessName);
     applyReviews(content.reviews);
     applyProjects(content.projects);
+    applySectionVisibility(content.homepage);
 
     var addressEl = document.querySelector("[data-portal='address']");
     if (addressEl) addressEl.textContent = content.address;
@@ -415,6 +506,34 @@
     } catch (err) {
       /* cross-origin parent without a listener — safe to ignore */
     }
+
+    initSectionEditor();
+  }
+
+  // Phase B: clicking a section in the portal preview opens its editor.
+  function initSectionEditor() {
+    var sections = document.querySelectorAll("[data-portal-section]");
+    if (!sections.length) return;
+
+    var style = document.createElement("style");
+    style.textContent =
+      "[data-portal-section]{cursor:pointer;transition:outline-color .15s}" +
+      "[data-portal-section]:hover{outline:2px dashed rgba(96,165,250,.7);outline-offset:-2px}";
+    document.head.appendChild(style);
+
+    sections.forEach(function (el) {
+      el.addEventListener("click", function (event) {
+        if (event.target.closest("a, button, input, textarea, select")) return;
+        try {
+          window.parent.postMessage(
+            { type: "idenworks:edit-section", section: el.getAttribute("data-portal-section") },
+            "*",
+          );
+        } catch (err) {
+          /* no parent listener — safe to ignore */
+        }
+      });
+    });
   }
 
   function loadAndApply() {

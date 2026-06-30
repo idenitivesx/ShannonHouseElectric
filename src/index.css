@@ -1040,3 +1040,34 @@ body.nav-open {
     grid-column: 1 / -1;
   }
 }
+
+/* Portal themes + layouts (from published.json appearance) */
+/* Accent is recolored at runtime via --amber override in portal-content.js. */
+body.layout-centered-hero .hero-content {
+  text-align: center;
+  max-width: 760px;
+}
+body.layout-centered-hero .hero-badges {
+  justify-content: center;
+}
+body.layout-compact .hero-band {
+  min-height: 38vh;
+}
+body.layout-compact .hero-content {
+  padding-top: 28px;
+  padding-bottom: 24px;
+}
+body.layout-emergency-banner .hero-band {
+  min-height: 44vh;
+}
+
+/* Phase D: typography presets (active only once an owner picks one) */
+body.has-font-preset { font-family: var(--font-body, inherit); }
+body.has-font-preset h1,
+body.has-font-preset h2,
+body.has-font-preset h3,
+body.has-font-preset .hero-name { font-family: var(--font-heading, inherit); }
+
+/* Phase E: service-grid layout — tighten hero, jobs grid leads (electrician). */
+body.layout-service-grid .hero-band { min-height: 34vh; }
+body.layout-service-grid .jobs-section { padding-top: 24px; }

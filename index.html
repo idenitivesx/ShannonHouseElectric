@@ -27,7 +27,7 @@
   </header>
 
   <!-- Compact hero — Duane + work vibe, phone-first -->
-  <section class="hero-band" id="top">
+  <section class="hero-band" id="top" data-portal-section="hero">
     <div class="hero-photo-wrap">
       <img class="hero-photo" src="/duane.jpg" alt="Duane Shannonhouse, owner of Shannonhouse Electric">
       <div class="hero-scrim"></div>
@@ -48,7 +48,7 @@
   </section>
 
   <!-- Recent Jobs — leads the page -->
-  <section class="jobs-section" id="jobs" data-portal-projects-section>
+  <section class="jobs-section" id="jobs" data-portal-projects-section data-portal-section="work">
     <div class="jobs-header">
       <h2>Recent Jobs</h2>
       <p>Real residential work — panels, circuits, lighting. Photos from the field.</p>
@@ -148,7 +148,7 @@
   </section>
 
   <!-- Reviews — minimal, portal-driven -->
-  <section class="reviews-section" id="reviews" data-portal-reviews-section hidden>
+  <section class="reviews-section" id="reviews" data-portal-reviews-section data-portal-section="reviews" hidden>
     <h2>What homeowners say</h2>
     <div class="reviews-grid" data-portal="reviews"></div>
     <p class="reviews-empty">No reviews yet — be the first.</p>
@@ -211,7 +211,7 @@
 
   <footer class="site-footer">
     <p class="footer-brand" data-portal="businessName">Shannonhouse Electric</p>
-    <p class="footer-tagline">Duane Shannonhouse · NCST grad · residential electrician</p>
+    <p class="footer-tagline" data-portal="footerTagline">Duane Shannonhouse · NCST grad · residential electrician</p>
     <p class="footer-copy">&copy; <span id="current-year">2026</span> Shannonhouse Electric</p>
     <p class="footer-credit">Site by <a href="https://idenworks.com" target="_blank" rel="noopener noreferrer">idenworks.com</a></p>
   </footer>
