@@ -558,6 +558,13 @@
       });
   }
 
+  window.addEventListener("message", function (event) {
+    var data = event.data;
+    if (!data || data.type !== "idenworks:appearance-preview" || !data.appearance) return;
+    applySiteAppearance({ appearance: data.appearance, brandColors: data.appearance.brandColors || {} });
+    applyFontPreset(data.appearance);
+  });
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", loadAndApply);
   } else {
