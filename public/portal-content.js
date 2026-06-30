@@ -70,6 +70,32 @@
   // Theme + layout from the portal (published.json `appearance`). Adds body
   // classes and overrides the site's accent so a theme change recolors the
   // whole site without a rebuild.
+  function parseHexColor(hex) {
+    if (!hex) return null;
+    var m = String(hex).replace(/^#/, "").match(/^([0-9a-f]{6})$/i);
+    if (!m) return null;
+    var n = parseInt(m[1], 16);
+    return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+  }
+
+  function mixHex(hex, amount, towardWhite) {
+    var c = parseHexColor(hex);
+    if (!c) return hex;
+    function ch(v) {
+      var next = towardWhite ? v + (255 - v) * amount : v * (1 - amount);
+      return Math.max(0, Math.min(255, Math.round(next))).toString(16).padStart(2, "0");
+    }
+    return "#" + ch(c.r) + ch(c.g) + ch(c.b);
+  }
+
+  function syncShannonhouseAccentTokens(root, accent) {
+    if (!accent) return;
+    root.style.setProperty("--brand-accent", accent);
+    root.style.setProperty("--amber", accent);
+    root.style.setProperty("--amber-dim", mixHex(accent, 0.14, false));
+    root.style.setProperty("--amber-hover", mixHex(accent, 0.18, true));
+  }
+
   function applySiteAppearance(content) {
     var appearance = content.appearance;
     var colors = (appearance && appearance.brandColors) || content.brandColors || {};
@@ -95,10 +121,7 @@
     if (colors.primary) root.style.setProperty("--brand-primary", colors.primary);
     if (colors.secondary) root.style.setProperty("--brand-secondary", colors.secondary);
     if (colors.accent) {
-      root.style.setProperty("--brand-accent", colors.accent);
-      // Shannonhouse's native accent token — recolors buttons, links, badges.
-      root.style.setProperty("--amber", colors.accent);
-      root.style.setProperty("--amber-dim", colors.accent);
+      syncShannonhouseAccentTokens(root.style, colors.accent);
     }
   }
 

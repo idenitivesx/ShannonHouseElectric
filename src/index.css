@@ -105,7 +105,7 @@ img {
 .site-nav .nav-call {
   color: var(--amber);
   padding: 8px 14px;
-  border: 1px solid rgba(240, 180, 41, 0.35);
+  border: 1px solid color-mix(in srgb, var(--amber) 35%, transparent);
   border-radius: 2px;
 }
 
@@ -230,7 +230,7 @@ img {
 }
 
 .badge-ncst {
-  border-color: rgba(240, 180, 41, 0.4);
+  border-color: color-mix(in srgb, var(--amber) 40%, transparent);
   color: var(--amber);
 }
 
@@ -246,7 +246,7 @@ img {
 }
 
 .hero-phone:hover {
-  background: #ffc94a;
+  background: var(--amber-hover, var(--amber));
   transform: translateY(-1px);
 }
 
@@ -322,7 +322,7 @@ img {
 }
 
 .job-card-featured {
-  border-color: rgba(240, 180, 41, 0.25);
+  border-color: color-mix(in srgb, var(--amber) 25%, transparent);
 }
 
 .job-photos-split {
@@ -401,7 +401,7 @@ img {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
-  color: rgba(240, 180, 41, 0.35);
+  color: color-mix(in srgb, var(--amber) 35%, transparent);
 }
 
 .job-photo-ev {
@@ -742,7 +742,7 @@ img {
 }
 
 .estimate-phone:hover {
-  color: #ffc94a;
+  color: var(--amber-hover, var(--amber));
 }
 
 .estimate-email {
@@ -827,7 +827,7 @@ textarea.form-control {
 }
 
 .btn-submit:hover:not(:disabled) {
-  background: #ffc94a;
+  background: var(--amber-hover, var(--amber));
 }
 
 .btn-submit:disabled {
