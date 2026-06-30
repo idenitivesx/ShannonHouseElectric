@@ -162,6 +162,12 @@ function mergeFields(portal = {}, reviews = [], media = [], manifest = null) {
     serviceAreas: portal.serviceAreas?.length ? portal.serviceAreas : fallback.serviceAreas || [],
     serviceCatalog: portal.serviceCatalog?.length ? portal.serviceCatalog : fallback.serviceCatalog || [],
     homepage: portal.homepage && Object.keys(portal.homepage).length ? portal.homepage : fallback.homepage || {},
+    appearance: manifest?.appearance ?? fallback.appearance ?? null,
+    brandColors:
+      manifest?.appearance?.brandColors ??
+      portal.brandColors ??
+      fallback.brandColors ??
+      {},
     reviews: normalizedReviews,
     gallery,
     projects,
