@@ -80,6 +80,7 @@
       "layout-compact",
       "layout-gallery-first",
       "layout-emergency-banner",
+      "layout-service-grid",
     ].forEach(function (cls) {
       document.body.classList.remove(cls);
     });
